@@ -4,7 +4,6 @@
   "description": "A modern, responsive College Attendance Tracker web application for students",
   "main": "server/index.ts",
   "scripts": {
-    "postinstall": "npm --prefix client install",
     "server": "tsx watch server/index.ts",
     "client": "npm --prefix client run dev",
     "build:client": "npm --prefix client run build",
@@ -13,17 +12,20 @@
     "start": "node dist/server/index.js",
     "dev": "tsx watch server/index.ts"
   },
-  "workspaces": [
-    "client"
-  ],
   "dependencies": {
     "@electric-sql/pglite": "^0.2.14",
     "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.13.1"
+    "lucide-react": "^0.475.0",
+    "pg": "^8.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -32,7 +34,14 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20.17.10",
     "@types/pg": "^8.11.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
   }
 }
