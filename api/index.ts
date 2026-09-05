@@ -1,4 +1,4 @@
-﻿import app from '../server/index';
+import app from '../server/index';
 import { initDb } from '../server/db/schema';
 
 let dbReady = false;
