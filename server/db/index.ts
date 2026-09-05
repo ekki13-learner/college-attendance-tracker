@@ -49,11 +49,16 @@ export async function getDb(): Promise<DatabaseAdapter> {
     };
   } else {
     console.log(`[DB] Initializing embedded persistent PostgreSQL at: ${DATA_DIR}`);
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    let pglite: PGlite;
+    try {
+      if (!fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+      pglite = new PGlite(DATA_DIR);
+    } catch (err) {
+      console.warn('[DB] Could not initialize persistent directory, using in-memory PGlite:', err);
+      pglite = new PGlite();
     }
-
-    const pglite = new PGlite(DATA_DIR);
 
     dbInstance = {
       async query<T = any>(text: string, params?: any[]): Promise<QueryResult<T>> {

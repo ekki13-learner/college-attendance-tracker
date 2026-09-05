@@ -111,9 +111,10 @@ router.post('/import-csv', authenticate, async (req: AuthRequest, res: Response)
            VALUES ($1, $2, $3) RETURNING id`,
           [userId, subjectName, subjectCode || subjectName.substring(0, 4).toUpperCase()]
         );
-        subjectId = newSub.rows[0].id;
-        subMapByName.set(subjectName.toLowerCase(), subjectId);
-        if (subjectCode) subMapByCode.set(subjectCode.toUpperCase(), subjectId);
+        const newId: number = Number(newSub.rows[0].id);
+        subjectId = newId;
+        subMapByName.set(subjectName.toLowerCase(), newId);
+        if (subjectCode) subMapByCode.set(subjectCode.toUpperCase(), newId);
       }
 
       if (!subjectId) continue;

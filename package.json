@@ -4,6 +4,7 @@
   "description": "A modern, responsive College Attendance Tracker web application for students",
   "main": "server/index.ts",
   "scripts": {
+    "postinstall": "npm --prefix client install",
     "server": "tsx watch server/index.ts",
     "client": "npm --prefix client run dev",
     "build:client": "npm --prefix client run build",
@@ -12,6 +13,9 @@
     "start": "node dist/server/index.js",
     "dev": "tsx watch server/index.ts"
   },
+  "workspaces": [
+    "client"
+  ],
   "dependencies": {
     "@electric-sql/pglite": "^0.2.14",
     "bcryptjs": "^2.4.3",
